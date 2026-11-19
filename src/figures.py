@@ -174,20 +174,7 @@ def study_area():
     ax.plot([], [], color=INK2, lw=.9, ls=(0, (5, 2, 1, 2)), label='International border')
     ax.plot([], [], color='#9a9994', lw=.4, label='Province boundary (before 2025)')
     ax.legend(loc='upper center', bbox_to_anchor=(.5, -.06), ncol=2, handlelength=1.6, columnspacing=1.5)
-    ins = ax.inset_axes([.72, .66, .26, .32])
-    for c in bd['countries']['features']:
-        for r in rings(c['geometry']):
-            ins.add_patch(Polygon(r, fc='#e8e7e3' if c['properties']['country_na'] != 'Vietnam' else '#c8c7c2',
-                                  ec='white', lw=.4))
-    ins.add_patch(Rectangle((REGION[0], REGION[1]), 1.05, 1.05, fill=False, ec='#b52f2e', lw=1))
-    ins.text(106.3, 13.3, 'Vietnam', fontsize=6, color=INK2)
-    ins.text(104.2, 12.6, 'Cambodia', fontsize=6, color=INK2, ha='center')
-    ins.set_xlim(102, 109.6)
-    ins.set_ylim(8.3, 15.2)
-    ins.set_aspect(1 / np.cos(np.radians(12)))
-    ins.set_xticks([])
-    ins.set_yticks([])
-    ins.set_facecolor('#f7f9fc')
+    # No locator inset: the Journal of Hydrology: Regional Studies guide forbids maps wider than the study area.
     save(fig, 'fig01_study_area')
 
 
